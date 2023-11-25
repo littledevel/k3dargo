@@ -19,6 +19,22 @@ A small demo repository for GitOps demo using k3d and Argocd
 #### Verify it works
 `kubectl version`
 
+#### Install Helm
+`wget https://get.helm.sh/helm-v3.13.2-linux-amd64.tar.gz`
+
+`tar zxvf helm-v3.13.2-linux-amd64.tar.gz`
+
+`cp linux-amd64/helm /usr/local/bin/helm`
+
+#### Verify helm works
+`helm version`
+
+#### Cleanup helm downloads
+`rm zxvf helm-v3.13.2-linux-amd64.tar.gz`
+
+`rm -rf linux-amd64`
+
+
 ## Create cluster
 
 #### Simple cluster with defaults
@@ -44,6 +60,8 @@ A small demo repository for GitOps demo using k3d and Argocd
 
 `k3d cluster delete demo`
 
+-----------------------------------------
+
 ## ArgoCD installation
 
 #### Create namespace
@@ -58,4 +76,11 @@ A small demo repository for GitOps demo using k3d and Argocd
 `chmod +x argocd-linux-amd64`
 
 `sudo mv argocd-linux-amd4 /usr/local/bin/argocd`
-#### 
+
+#### Port forward to argocd installation
+`kubectl port-forward -n argocd svc/argocd-server 8000:80 &`
+
+## Basic usage
+
+#### Install a public repository
+`kubectl apply -f repository.yaml`
