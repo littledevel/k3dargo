@@ -19,11 +19,11 @@ spec:
               number: 80
 
 ---
-#apiVersion: traefik.containo.us/v1alpha1
-#kind: Middleware
-#metadata:
-#  name: argocd-stripprefix
-#spec:
-#  stripPrefix:
-#    prefixes:
-#      - /argocd
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: argocd-stripprefix
+spec:
+  stripPrefix:
+    prefixes:
+      - /argocd
