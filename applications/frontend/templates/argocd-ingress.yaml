@@ -7,6 +7,9 @@ metadata:
   annotations:
     ingress.kubernetes.io/ssl-redirect: "false"
 spec:
+  stripPrefix:
+    prefixes:
+      - /argocd
   rules:
   - http:
       paths:
