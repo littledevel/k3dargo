@@ -80,6 +80,9 @@ A small demo repository for GitOps demo using k3d and Argocd
 #### Port forward to argocd installation
 `kubectl port-forward -n argocd svc/argocd-server 8000:80 &`
 
+#### Login to argocd
+`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo`
+
 ## Basic usage
 
 #### Install a public repository
