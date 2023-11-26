@@ -7,4 +7,6 @@ RUN apt-get update && apt-get install -y \
     vim
 RUN apt-get install -y nginx
 COPY index.html /var/www/html/ 
-CMD ["nginx", "-g", "daemon off;"]
+COPY default /etc/nginx/sites-available/
+COPY nginx.conf /etc/nginx/
+CMD ["nginx"]
