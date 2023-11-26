@@ -7,9 +7,6 @@ metadata:
   annotations:
     ingress.kubernetes.io/ssl-redirect: "false"
 spec:
-  stripPrefix:
-    prefixes:
-      - /argocd
   rules:
   - http:
       paths:
@@ -20,3 +17,13 @@ spec:
             name: frontend
             port: 
               number: 80
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: argocd-stripprefix
+spec:
+  stripPrefix:
+    prefixes:
+      - /argocd
