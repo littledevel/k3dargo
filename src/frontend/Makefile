@@ -1,4 +1,4 @@
-FRONTEND_TAG ?= 1.1
+FRONTEND_TAG ?= 1.2
 
 build:
 	docker build -t frontend:$(FRONTEND_TAG) .
