@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: https://github.com/littledevel/k3dargo.git
     targetRevision: HEAD 
-    path: applications/db
+    path: applications/business/db
   destination:
     server: https://kubernetes.default.svc
     namespace: db
