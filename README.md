@@ -60,6 +60,20 @@ A small demo repository for GitOps demo using k3d and Argocd
 
 `k3d cluster delete demo`
 
+#### Mount a volume
+`k3d cluster create --servers 3 --agents 5 -p "80:80@loadbalancer" -p "443:443@loadbalancer --volume '/tmp/data:/data@agent[*]'` 
+
+#### Create a registry
+`k3d registry create` # defaults to k3d-registry
+
+#### Create a cluster that uses this registry
+`k3d cluster create --registry-use k3d-registry:41935`
+
+#### Use the registry
+`docker tag nginx:latest k3d-registry:41935/mynginx:0.1`
+`docker push k3d-registry:41935/mynginx:0.1`
+`kubectl run mynginx --image k3d-registry:41935/mynginx:01`
+
 -----------------------------------------
 
 ## ArgoCD installation
